@@ -1,14 +1,13 @@
-package com.example.pricescanner;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.journeyapps.barcodescanner.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     private Button scanButton;
     private ImageView productImage;
     private TextView productName;
@@ -27,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Add scanning functionality here
+                Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+                startActivity(intent);
             }
         });
     }
