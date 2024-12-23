@@ -1,3 +1,5 @@
+package com.example.pricescanner;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -6,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
     private Button scanButton;
     private ImageView productImage;
     private TextView productName;
@@ -24,14 +27,8 @@ public class MainActivity extends AppCompatActivity {
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performScan();
+                // Add scanning functionality here
             }
         });
-    }
-
-    private void performScan() {
-        // TODO: Add scanning functionality here
-        productName.setText("स्कैन किए गए उत्पाद का नाम");
-        productPrice.setText("₹ 999");
     }
 }
