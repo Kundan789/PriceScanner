@@ -21,20 +21,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize UI elements
         scanButton = findViewById(R.id.scan_button);
         productImage = findViewById(R.id.product_image);
         productName = findViewById(R.id.product_name);
         productPrice = findViewById(R.id.product_price);
 
-        // Set up scan button functionality
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Open barcode scanner
+                // Launch barcode scanner
                 Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            // Handle the barcode result here
+            String barcode = data.getStringExtra("SCAN_RESULT");
+            productName.setText("Scanned Code: " + barcode);
+        }
     }
 }
